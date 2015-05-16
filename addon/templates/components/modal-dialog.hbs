@@ -2,9 +2,13 @@
   {{#if hasOverlay}}
     <div {{bind-attr class="overlayClassNamesString translucentOverlay:translucent overlay-class"}} {{action 'close'}}></div>
   {{/if}}
-  {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
+  {{#component positioner classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
                                 alignment=alignment
-                                alignmentTarget=alignmentTarget}}
+                                attachment='top left'
+                                targetAttachment='right top'
+                                target=alignmentTarget
+                                alignmentTarget=alignmentTarget
+  }}
     {{yield}}
-  {{/ember-modal-dialog-positioned-container}}
+  {{/component}}
 {{/ember-wormhole}}

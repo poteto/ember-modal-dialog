@@ -43,6 +43,9 @@ export default Ember.Component.extend({
   }),
 
   alignmentTarget: null, // view instance, passed in
+  positioner: computed('isPositioned', function() {
+    return this.get('isPositioned') ? 'ember-tether' : 'ember-modal-dialog-positioned-container';
+  }),
   alignment: 'center', // passed in
   isPositioned: computed.notEmpty('alignmentTarget'),
   hasOverlay: true,

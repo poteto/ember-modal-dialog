@@ -15,9 +15,10 @@ export default Ember.Component.extend({
   tagName: '', // modal-dialog is itself tagless. positioned-container provides
                // the container div
   layout: template,
-
+// BEGIN-SNIPPET random-javascript
   modalService: injectService("modal-dialog"),
   destinationElementId: reads("modalService.destinationElementId"),
+// END-SNIPPET
 
   'container-class': null, // set this from templates
   containerClassNames: ['ember-modal-dialog'], // set this in a subclass definition

@@ -7,11 +7,13 @@
   <button {{action 'toggleBasic'}}>Do It</button>
   {{code-snippet name='basic.hbs'}}
   {{#if isShowingBasic}}
+    {{!-- BEGIN-SNIPPET basic --}}
     {{#modal-dialog close='toggleBasic'}}
       <h1>Stop! Modal Time!</h1>
       <p>Basic</p>
       <button {{action 'toggleBasic'}}>Close</button>
     {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
 
@@ -20,12 +22,14 @@
   <button {{action 'toggleTranslucent'}}>Do It</button>
   {{code-snippet name='translucent.hbs'}}
   {{#if isShowingTranslucent}}
+    {{!-- BEGIN-SNIPPET translucent --}}
     {{#modal-dialog close='toggleTranslucent'
                     translucentOverlay=true}}
       <h1>Stop! Modal Time!</h1>
       <p>With Translucent Overlay</p>
       <button {{action 'toggleTranslucent'}}>Close</button>
     {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
 
@@ -35,6 +39,7 @@
   {{code-snippet name='custom-styles.hbs'}}
   {{code-snippet name='custom-styles.scss'}}
   {{#if isShowingCustomStyles}}
+    {{!-- BEGIN-SNIPPET custom-styles --}}
     {{#modal-dialog close='toggleCustomStyles'
                     alignment='none'
                     container-class=customContainerClassNames
@@ -43,6 +48,7 @@
       <p>Custom Styles</p>
       <button {{action 'toggleCustomStyles'}}>Close</button>
     {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
 
@@ -53,6 +59,7 @@
   </div>
   {{code-snippet name='alignment-target-selector.hbs'}}
   {{#if isShowingAlignmentTargetSelector}}
+    {{!-- BEGIN-SNIPPET alignment-target-selector --}}
     {{#modal-dialog close='toggleAlignmentTargetSelector'
                     hasOverlay=false
                     alignment=alignmentTargetDirection
@@ -62,6 +69,7 @@
       <p>Alignment: {{alignmentTargetDirection}}</p>
       <button {{action 'closeAlignmentTargetSelector'}}>Close</button>
     {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
 
@@ -74,6 +82,7 @@
   </div>
   {{code-snippet name='alignment-target-view.hbs'}}
   {{#if isShowingAlignmentTargetView}}
+    {{!-- BEGIN-SNIPPET alignment-target-view --}}
     {{#modal-dialog close='toggleAlignmentTargetView'
                     hasOverlay=false
                     alignment=alignmentTargetDirection
@@ -83,6 +92,7 @@
       <p>Alignment: {{alignmentTargetDirection}}</p>
       <button {{action 'closeAlignmentTargetView'}}>Close</button>
     {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
 
@@ -95,6 +105,7 @@
   </div>
   {{code-snippet name='alignment-target-element.hbs'}}
   {{#if isShowingAlignmentTargetElement}}
+    {{!-- BEGIN-SNIPPET alignment-target-element --}}
     {{#modal-dialog close='toggleAlignmentTargetElement'
                     hasOverlay=false
                     alignment=alignmentTargetDirection
@@ -104,6 +115,7 @@
       <p>Alignment: {{alignmentTargetDirection}}</p>
       <button {{action 'closeAlignmentTargetElement'}}>Close</button>
     {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
 
@@ -113,12 +125,14 @@
   {{code-snippet name='subclass.js'}}
   {{code-snippet name='subclass.hbs'}}
   {{#if isShowingSubclassed}}
+    {{!-- BEGIN-SNIPPET subclass --}}
     {{#my-cool-modal-dialog close='toggleSubclassed'
                     translucentOverlay=true}}
       <h1>Stop! Modal Time!</h1>
       <p>Via Subclass</p>
       <button {{action 'toggleSubclassed'}}>Close</button>
     {{/my-cool-modal-dialog}}
+    {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
 
@@ -129,11 +143,13 @@
   <div id='container-in-place'>
     I AM THE CONTAINER
     {{#if isShowingInPlace}}
+      {{!-- BEGIN-SNIPPET in-place --}}
       {{#modal-dialog close='toggleInPlace' renderInPlace=true alignment='none'}}
         <h1>Stop! Modal Time!</h1>
         <p>In Place</p>
         <button {{action 'toggleInPlace'}}>Close</button>
       {{/modal-dialog}}
+      {{!-- END-SNIPPET --}}
     {{/if}}
   </div>
 </div>

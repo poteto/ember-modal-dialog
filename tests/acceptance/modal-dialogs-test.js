@@ -4,9 +4,11 @@ import startApp from '../helpers/start-app';
 
 import QUnit from 'qunit';
 
-var modalRootElementSelector = '#modal-overlays';
-var overlaySelector = '.ember-modal-overlay';
-var dialogSelector = '.ember-modal-dialog';
+var application;
+const modalRootElementSelector = '#modal-overlays';
+const overlaySelector = '.ember-modal-overlay';
+const dialogSelector = '.ember-modal-dialog';
+const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
 QUnit.assert.isPresentOnce = function(selector, message) {
   message = message || selector + ' is present in DOM once';
@@ -44,8 +46,6 @@ QUnit.assert.dialogOpensAndCloses = function(options, message) {
   });
 };
 
-var application;
-
 module('Acceptance: Display Modal Dialogs', {
   beforeEach: function() {
     application = startApp();
@@ -56,7 +56,7 @@ module('Acceptance: Display Modal Dialogs', {
   }
 });
 
-test('opening and closing modals', function(assert) {
+test('basic modal', function(assert) {
   visit('/');
 
   andThen(function() {
@@ -66,8 +66,6 @@ test('opening and closing modals', function(assert) {
     assert.isPresentOnce('#example-basic button');
   });
 
-  var dialogCloseButton = [dialogSelector, 'button'].join(' ');
-
   assert.dialogOpensAndCloses({
     openSelector: '#example-basic button',
     dialogText: 'Basic',
@@ -82,6 +80,10 @@ test('opening and closing modals', function(assert) {
     hasOverlay: true,
     shouldClose: true
   });
+});
+
+test('modal with translucent overlay', function(assert) {
+  visit('/');
 
   assert.dialogOpensAndCloses({
     openSelector: '#example-translucent button',
@@ -97,6 +99,10 @@ test('opening and closing modals', function(assert) {
     hasOverlay: true,
     shouldClose: true
   });
+});
+
+test('modal with custom styles', function(assert) {
+  visit('/');
 
   assert.dialogOpensAndCloses({
     openSelector: '#example-custom-styles button',
@@ -116,6 +122,10 @@ test('opening and closing modals', function(assert) {
     hasOverlay: true,
     shouldClose: true,
   });
+});
+
+test('alignment target - selector', function(assert) {
+  visit('/');
 
   assert.dialogOpensAndCloses({
     openSelector: '#example-alignment-target-selector button',
@@ -127,13 +137,10 @@ test('opening and closing modals', function(assert) {
       assert.ok(Ember.$(`${dialogSelector}`).hasClass('ember-modal-dialog-right'), 'has alignment class name');
     }
   });
+});
 
-  // assert.dialogOpensAndCloses({
-  //   openSelector: '#example-alignment-target-view button',
-  //   dialogText: 'Alignment Target - View',
-  //   closeSelector: dialogCloseButton,
-  //   hasOverlay: false
-  // });
+test('alignment target - element', function(assert) {
+  visit('/');
 
   assert.dialogOpensAndCloses({
     openSelector: '#example-alignment-target-element button',
@@ -142,6 +149,21 @@ test('opening and closing modals', function(assert) {
     hasOverlay: false,
     shouldClose: false
   });
+});
+
+// test('alignment target - view', function(assert) {
+//   visit('/');
+
+//   assert.dialogOpensAndCloses({
+//     openSelector: '#example-alignment-target-view button',
+//     dialogText: 'Alignment Target - View',
+//     closeSelector: dialogCloseButton,
+//     hasOverlay: false
+//   });
+// });
+
+test('subclassed modal', function(assert) {
+  visit('/');
 
   assert.dialogOpensAndCloses({
     openSelector: '#example-subclass button',
@@ -153,6 +175,10 @@ test('opening and closing modals', function(assert) {
       assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('my-cool-modal'), 'has provided containerClassNames');
     }
   });
+});
+
+test('in place', function(assert) {
+  visit('/');
 
   click('#example-in-place button');
   var dialogText = 'In Place';

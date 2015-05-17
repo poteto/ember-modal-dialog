@@ -151,16 +151,17 @@ test('alignment target - element', function(assert) {
   });
 });
 
-// test('alignment target - view', function(assert) {
-//   visit('/');
+test('alignment target - view', function(assert) {
+  visit('/');
 
-//   assert.dialogOpensAndCloses({
-//     openSelector: '#example-alignment-target-view button',
-//     dialogText: 'Alignment Target - View',
-//     closeSelector: dialogCloseButton,
-//     hasOverlay: false
-//   });
-// });
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-alignment-target-view button',
+    dialogText: 'Alignment Target - View',
+    closeSelector: dialogCloseButton,
+    hasOverlay: false,
+    shouldClose: false
+  });
+});
 
 test('subclassed modal', function(assert) {
   visit('/');
